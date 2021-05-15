@@ -1,6 +1,6 @@
 .App {
   background-color: #282c34;
-  height: 100vh;
+  height: 100vh; 
 }
 
 
@@ -10,7 +10,28 @@
   text-align: center;
 }
 
+.App-body {
+  display: flex;
+  overflow-x: auto;
+}
 
 .Column {
-  display: flex;
+  background: #ddd;
+  width: 300px;
+  height: fit-content;
+  margin: 5px;
+}
+
+.Cards {
+  background: #ddd;
+  height: fit-content;
+  margin: 10px;
+}
+
+.Card {
+  background: #fff;
+  margin: 5px;
+  padding: 10px;
+  font-size: 15px;
+  min-height: 18px;
 }
