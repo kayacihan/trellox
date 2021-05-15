@@ -26,6 +26,11 @@
   padding: 10px;
 }
 
+.Column-Add-Card {
+  padding: 10px;
+  color: #444;
+}
+
 .Cards {
   background: #ddd;
   height: fit-content;

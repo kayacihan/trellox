@@ -6,6 +6,7 @@ class Column extends Component {
             <div className="Column">
                 <div className="Column-Title">title</div>
                 <Cards />
+                <div className="Column-Add-Card">+ Add Card</div>
             </div>
         )
     }
