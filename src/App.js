@@ -9,6 +9,7 @@ function App() {
         <Column />
         <Column />
         <Column />
+        <div className="Add_Column">+ Add Column</div>
       </div>
 
     </div>
