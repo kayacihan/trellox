@@ -4,6 +4,7 @@ class Column extends Component {
     render() {
         return (
             <div className="Column">
+                <div className="Column-Title">title</div>
                 <Cards />
             </div>
         )
