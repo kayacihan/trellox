@@ -45,6 +45,7 @@
   background: #ddd;
   height: fit-content;
   margin: 10px;
+    min-height: 18px;
 }
 
 .Card {
