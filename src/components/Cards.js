@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import Card from "./Card";
 import { TaskContext } from '../utils/TaskContext'
-
+import NewCard from './NewCard'
 
 export default function Cards(props) {
     const { data } = useContext(TaskContext)
+    const [addingCard, setAddingCard] = useState(false)
 
         return (
             <Droppable droppableId={props.id} key={props.id} >
@@ -26,7 +27,16 @@ export default function Cards(props) {
                                 </Draggable>
                         ))}
                             {provided.placeholder}
-
+                        {addingCard ?
+                            <NewCard
+                                content={""}
+                                columnid={props.id}
+                                closeEdit={() => setAddingCard(!addingCard)}
+                            />
+                            : <div
+                                onClick={() => setAddingCard(!addingCard)}
+                                className="Column-Add-Card"
+                            >+ Add Card</div>}
                         </div>
                     )}
             </Droppable>

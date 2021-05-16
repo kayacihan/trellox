@@ -19,7 +19,6 @@ export default function Column(props) {
 
     const onDragEnd = (result) => {
         const { destination, source } = result
-        console.log(result)
         // dropped outside the list
         if (!destination) {
             return;
@@ -30,7 +29,6 @@ export default function Column(props) {
             source.index,
             destination.index
         );
-        console.log(data.columns[source.droppableId].taskIds)
         setData({
             ...data,
             columns: {
@@ -41,25 +39,6 @@ export default function Column(props) {
                 }
             }
         })
-        console.log(data)
-        console.log({
-            ...data,
-            columns: {
-                ...data.columns,
-                [source.droppableId]: {
-                    ...data.columns[source.droppableId],
-                    taskIds: items
-                }
-            }
-        })
-
-        console.log(data)
-        console.log({
-            [source.droppableId]: {
-                ...data.columns[source.droppableId],
-                taskIds: items
-            }
-        })
     }
     const column = data.columns[props.id]
         return (
@@ -67,9 +46,6 @@ export default function Column(props) {
             <div className="Column">
                     <div className="Column-Title">{column.title}</div>
                     <Cards key={props.id} id={props.id} index={props.id} />
-                    <div
-                        className="Column-Add-Card"
-                    >+ Add Card</div>
             </div>
             </DragDropContext>
         )
