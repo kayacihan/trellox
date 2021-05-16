@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { DragDropContext, } from "react-beautiful-dnd";
 import Cards from "./Cards";
 import { TaskContext } from '../utils/TaskContext'
@@ -66,8 +66,10 @@ export default function Column(props) {
             <DragDropContext onDragEnd={onDragEnd} >
             <div className="Column">
                     <div className="Column-Title">{column.title}</div>
-                    <Cards key={props.id} id={column.id} index={column.id} />
-                <div className="Column-Add-Card">+ Add Card</div>
+                    <Cards key={props.id} id={props.id} index={props.id} />
+                    <div
+                        className="Column-Add-Card"
+                    >+ Add Card</div>
             </div>
             </DragDropContext>
         )
