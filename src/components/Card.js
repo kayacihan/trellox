@@ -4,7 +4,7 @@ class Card extends Component {
     render() {
         return (
             <div className="Card">
-                {this.props.context}
+                {this.props.task}
             </div>
         )
     }
