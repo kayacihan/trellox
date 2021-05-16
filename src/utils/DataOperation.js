@@ -39,6 +39,17 @@ export default function DataOperation(params) {
                     }
                 }
             })
+        case "EDIT_CARD":
+            return ({
+                ...data,
+                tasks: {
+                    ...data.tasks,
+                    [params.data.taskid]: {
+                        id: params.data.taskid,
+                        content: params.data.content
+                    }
+                }
+            })
         default:
             return {}
     }

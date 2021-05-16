@@ -21,7 +21,7 @@ export default function Cards(props) {
                                             {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         >
-                                        <Card key={task} task={data.tasks[task].content} />
+                                        <Card key={task} task={data.tasks[task]} />
                                         </div>
                                     )}
                                 </Draggable>
