@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import './App.css';
 import Column from "./components/Column";
-import NewColumn from "./components/NewColumn";
+import ColumnEditor from "./components/ColumnEditor";
 import initData from './utils/initial-data'
 import { TaskContext } from './utils/TaskContext'
 
@@ -12,23 +12,23 @@ function App() {
 
   //set initial data from json if localstorage is null
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("ckckck"))
+    const storedData = JSON.parse(localStorage.getItem("trellox"))
     if (storedData)
-      setData(JSON.parse(localStorage.getItem("ckckck")))
+      setData(JSON.parse(localStorage.getItem("trellox")))
     else
       setData(initData)
   }, []);
 
   //update localStorage after every update
   useEffect(() => {
-    localStorage.setItem('ckckck', JSON.stringify(data))
+    localStorage.setItem('trellox', JSON.stringify(data))
   }, [data, setData]);
 
   return (
     <TaskContext.Provider value={value}>
       {data.columnOrder && <Column columns={data.columnOrder} />}
           {addingColumn
-        ? <NewColumn closeEdit={() => setAddingColumn(!addingColumn)} />
+        ? <ColumnEditor closeEdit={() => setAddingColumn(!addingColumn)} />
         : <div className="Add_Column" onClick={() => setAddingColumn(!addingColumn)}
         >+ Add Column</div>}
     </TaskContext.Provider>

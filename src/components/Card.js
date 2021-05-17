@@ -1,3 +1,5 @@
+///// Creating card from task in column
+//////////////////////////////////////////////
 import React, { useState } from "react";
 import NewCard from './CardEditor'
 

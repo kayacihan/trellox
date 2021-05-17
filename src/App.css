@@ -22,7 +22,14 @@
 }
 
 .Column-Title {
+  position: relative;
+  cursor: pointer;
+  background: 444;
+  margin: 5px;
   padding: 10px;
+  font-size: 15px;
+  min-height: 18px;
+
 }
 
 .Column-Add-Card {

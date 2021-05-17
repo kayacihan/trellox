@@ -1,15 +1,38 @@
+///// Creating Trello Columns
+//////////////////////////////////////////////
 import React, { useContext, useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { TaskContext } from '../utils/TaskContext'
 import Card from "./Card";
 import NewCard from './CardEditor'
+import ColumnEditor from "./ColumnEditor";
 
 export default function Cards(props) {
     const { data } = useContext(TaskContext)
     const [addingCard, setAddingCard] = useState(false)
+    const [editingColumn, setEditingColumn] = useState(false)
+
 
         return (
-            <div>
+            <div className="Column" key={props.index}>
+
+                {!editingColumn
+                    ? <div className="Column-Title" key={props.index}>
+                        <div>
+                            {data.columns[props.id].title}
+                            <div className="Card-Edits"
+                                onClick={() => setEditingColumn(!editingColumn)} >
+                                Edit
+                                </div>
+                        </div>
+
+                    </div>
+                    : <ColumnEditor
+                        title={data.columns[props.id].title}
+                        columnid={props.id}
+                        mode={"EDIT"}
+                        closeEdit={() => setEditingColumn(!editingColumn)} />
+                }
                 <Droppable droppableId={props.id} key={props.id} type="TASK" >
                     {(provided, snapshot) => (
                     <div
