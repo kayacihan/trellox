@@ -7,33 +7,30 @@ export default function NewCard(params) {
     const { data, setData } = useContext(TaskContext)
 
     const mySubmitHandler = (e) => {
-        setData(
-            params.mode !== "EDIT"
-                ? operation({ reducer: "ADD_NEW_CARD", data: { content, data, columnid: params.columnid } })
-                : operation({ reducer: "EDIT_CARD", data: { content, data, taskid: params.taskid } })
+        setData(params.mode !== "EDIT"
+            ? operation({ reducer: "ADD_NEW_CARD", data: { content, data, columnid: params.columnid } })
+            : operation({ reducer: "EDIT_CARD", data: { content, data, taskid: params.taskid } })
         )
         params.closeEdit()
     }
-    const myChangeHandler = (event) => {
-        setContent(event.target.value);
-    }
+
     return (
         <div className="Card-Editor">
             <input
                 type='text'
                 value={content}
                 placeholder="Enter card title..."
-                onChange={myChangeHandler}
+                onChange={(e) => setContent(e.target.value)}
             />
             <div className="Edit-Buttons">
-            <button
-                type="button"
-                onClick={mySubmitHandler}
-            >Save</button>
-            <button
-                type="button"
-                onClick={params.closeEdit}
-            >Cancel</button>
+                <button
+                    type="button"
+                    onClick={mySubmitHandler}
+                >Save</button>
+                <button
+                    type="button"
+                    onClick={params.closeEdit}
+                >Cancel</button>
             </div>
         </div>
     );

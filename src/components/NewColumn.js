@@ -10,17 +10,14 @@ export default function NewColumn(params) {
         setData(operation({ reducer: "ADD_NEW_COLUMN", data: { title, data } }))
         params.closeEdit()
     }
-    const myChangeHandler = (event) => {
-        setTitle(event.target.value);
-    }
+
     return (
         <div className="Column-Add-Card" >
             <input
                 type='text'
                 value={title}
-
                 placeholder="Enter card title..."
-                onChange={myChangeHandler}
+                onChange={(e) => setTitle(e.target.value)}
             />
             <div className="Edit-Buttons">
             <button

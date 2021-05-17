@@ -1,18 +1,17 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import initData from './utils/initial-data'
-
-const Context = createContext();
-
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Context.Provider value={initData}>
-      <App />
-    </Context.Provider>
-  </React.StrictMode>,
+  <div className="App">
+    <div className="App-header">Trellox</div>
+    <div className="App-body">
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </div>
+  </div>,
   document.getElementById('root')
 );
 

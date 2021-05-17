@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import Card from "./Card";
 import { TaskContext } from '../utils/TaskContext'
-import NewCard from './NewCard'
+import Card from "./Card";
+import NewCard from './CardEditor'
 
 export default function Cards(props) {
     const { data } = useContext(TaskContext)
@@ -46,7 +46,6 @@ export default function Cards(props) {
             </Droppable>
             </div>
         )
-
 }
 
 

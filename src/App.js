@@ -6,10 +6,11 @@ import initData from './utils/initial-data'
 import { TaskContext } from './utils/TaskContext'
 
 function App() {
-  const [data, setData] = useState({})
-  const [addingColumn, setAddingColumn] = useState(false)
+  const [data, setData] = useState({}) // main data
+  const [addingColumn, setAddingColumn] = useState(false) //control for adding column 
   const value = useMemo(() => ({ data, setData }), [data, setData]);
 
+  //set initial data from json if localstorage is null
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("ckckck"))
     if (storedData)
@@ -18,36 +19,19 @@ function App() {
       setData(initData)
   }, []);
 
+  //update localStorage after every update
   useEffect(() => {
     localStorage.setItem('ckckck', JSON.stringify(data))
   }, [data, setData]);
 
   return (
-    <div className="App">
-      <div className="App-header">Trellox</div>
-      <div className="App-body">
-        <TaskContext.Provider value={value}>
-          {data.columnOrder &&
-            <Column columns={data.columnOrder} />
-          }
+    <TaskContext.Provider value={value}>
+      {data.columnOrder && <Column columns={data.columnOrder} />}
           {addingColumn
-            ? <NewColumn
-              title={""}
-              closeEdit={() => setAddingColumn(!addingColumn)}
-            />
-            : <div
-              className="Add_Column"
-              onClick={() => setAddingColumn(!addingColumn)}
-            >+ Add Column</div>
-          }
-        </TaskContext.Provider>
-      </div>
-
-    </div>
-
-
-
-
+        ? <NewColumn closeEdit={() => setAddingColumn(!addingColumn)} />
+        : <div className="Add_Column" onClick={() => setAddingColumn(!addingColumn)}
+        >+ Add Column</div>}
+    </TaskContext.Provider>
   );
 }
 

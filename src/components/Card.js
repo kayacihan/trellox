@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NewCard from './NewCard'
+import NewCard from './CardEditor'
 
 export default function Card(props) {
     const [editingCard, setEditingCard] = useState(false)
