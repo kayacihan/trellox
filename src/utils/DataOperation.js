@@ -1,12 +1,21 @@
 import uuid from '../utils/uuid'
 
-export default function DataOperation(params) {
+// to avoid string typing error and as a list of operations
+const reducer = {
+    ADD_NEW_COLUMN: "ADD_NEW_COLUMN",
+    ADD_NEW_CARD: "ADD_NEW_CARD",
+    EDIT_CARD: "EDIT_CARD",
+    DELETE_CARD: "DELETE_CARD",
+}
+
+// data operations
+const operation = (params) => {
     const data = params.data.data
     const columnid = uuid()
     const taskid = uuid()
 
     switch (params.reducer) {
-        case "ADD_NEW_COLUMN":
+        case reducer.ADD_NEW_COLUMN:
             return ({
                 ...data,
                 columns: {
@@ -20,7 +29,7 @@ export default function DataOperation(params) {
                 columnOrder: data.columnOrder.concat([columnid])
 
             })
-        case "ADD_NEW_CARD":
+        case reducer.ADD_NEW_CARD:
             return ({
                 ...data,
                 tasks: {
@@ -38,7 +47,7 @@ export default function DataOperation(params) {
                     }
                 }
             })
-        case "EDIT_CARD":
+        case reducer.EDIT_CARD:
             return ({
                 ...data,
                 tasks: {
@@ -49,7 +58,7 @@ export default function DataOperation(params) {
                     }
                 }
             })
-        case "DELETE_CARD":
+        case reducer.DELETE_CARD:
             return ({
                 ...data,
                 tasks: Object.keys(data.tasks)
@@ -70,3 +79,6 @@ export default function DataOperation(params) {
             return {}
     }
 }
+
+
+export { operation, reducer }

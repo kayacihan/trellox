@@ -1,13 +1,15 @@
 import { useState, useContext } from 'react';
 import { TaskContext } from '../utils/TaskContext'
-import operation from '../utils/DataOperation'
+import { operation, reducer } from '../utils/DataOperation'
 
 export default function NewColumn(params) {
     const [title, setTitle] = useState(params.title ? params.title : "")
     const { data, setData } = useContext(TaskContext)
 
     const mySubmitHandler = (e) => {
-        setData(operation({ reducer: "ADD_NEW_COLUMN", data: { title, data } }))
+        setData(operation({
+            reducer: reducer.ADD_NEW_COLUMN, data: { title, data }
+        }))
         params.closeEdit()
     }
 
@@ -16,7 +18,7 @@ export default function NewColumn(params) {
             <input
                 type='text'
                 value={title}
-                placeholder="Enter card title..."
+                placeholder="Enter column title..."
                 onChange={(e) => setTitle(e.target.value)}
             />
             <div className="Edit-Buttons">
