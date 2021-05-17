@@ -7,7 +7,6 @@ export default function NewCard(params) {
     const { data, setData } = useContext(TaskContext)
 
     const mySubmitHandler = (e) => {
-        console.log(params)
         setData(
             params.mode !== "EDIT"
                 ? operation({ reducer: "ADD_NEW_CARD", data: { content, data, columnid: params.columnid } })

@@ -16,7 +16,7 @@ export default function Cards(props) {
                             ref={provided.innerRef}
                             {...provided.droppableProps}
                             className="Cards">
-                        {data.columns[props.index].taskIds.map((task, index) => (
+                            {data.columns[props.id].taskIds.map((task, index) => (
                             <Draggable key={task} draggableId={task} index={index} >
                                     {(provided, snapshot) => (
                                         <div

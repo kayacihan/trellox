@@ -5,9 +5,6 @@ import { TaskContext } from '../utils/TaskContext'
 
 
 export default function Column(props) {
-
-    console.log(props)
-
     const { data, setData } = useContext(TaskContext)
     // a little function to help us with reordering the result
     const reorder = (list, startIndex, endIndex) => {
@@ -34,7 +31,6 @@ export default function Column(props) {
 
     const onDragEnd = (result) => {
         const { destination, source } = result
-        console.log(result)
         // dropped outside the list
         if (!destination) { return; }
 
@@ -85,11 +81,10 @@ export default function Column(props) {
         return (
             <DragDropContext onDragEnd={onDragEnd} >
                 {props.columns.map((columnId, index) => {
-                    console.log(columnId)
                     return (
-            <div className="Column">
+                        <div className="Column">
                             <div className="Column-Title">{data.columns[columnId].title}</div>
-                            <Cards key={columnId} id={columnId} index={columnId} />
+                            <Cards key={columnId} id={columnId} index={index} />
                         </div>)
                 })}
             </DragDropContext>

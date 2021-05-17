@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
-import { TaskContext } from '../utils/TaskContext'
+import React, { useState } from "react";
 import NewCard from './NewCard'
 
 export default function Card(props) {
-    const { data, setData } = useContext(TaskContext)
     const [editingCard, setEditingCard] = useState(false)
         return (
             <div className="Card">

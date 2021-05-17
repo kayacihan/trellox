@@ -14,14 +14,15 @@ export default function NewColumn(params) {
         setTitle(event.target.value);
     }
     return (
-        <div className="Column-Title-Edit">
+        <div className="Column-Add-Card" >
             <input
                 type='text'
                 value={title}
-                className="Column-Title-Edit"
+
                 placeholder="Enter card title..."
                 onChange={myChangeHandler}
             />
+            <div className="Edit-Buttons">
             <button
                 type="button"
                 onClick={mySubmitHandler}
@@ -30,6 +31,7 @@ export default function NewColumn(params) {
                 type="button"
                 onClick={params.closeEdit}
             >Cancel</button>
-        </div>
+            </div>
+        </div >
     );
 }
