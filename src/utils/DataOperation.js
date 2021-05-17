@@ -49,6 +49,23 @@ export default function DataOperation(params) {
                     }
                 }
             })
+        case "DELETE_CARD":
+            return ({
+                ...data,
+                tasks: Object.keys(data.tasks)
+                    .filter(task => task !== params.data.taskid)
+                    .reduce((obj, key) => {
+                        obj[key] = data.tasks[key];
+                        return obj;
+                    }, {}),
+                columns: {
+                    ...data.columns,
+                    [params.data.columnid]: {
+                        ...data.columns[params.data.columnid],
+                        taskIds: data.columns[params.data.columnid].taskIds.filter(task => task !== params.data.taskid)
+                    }
+                }
+            })
         default:
             return {}
     }

@@ -20,6 +20,7 @@ export default function Card(props) {
                         mode={"EDIT"}
                         content={props.task.content}
                         taskid={props.task.id}
+                        columnid={props.columnid}
                         closeEdit={() => setEditingCard(!editingCard)}
                     />
                 }
