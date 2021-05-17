@@ -27,12 +27,9 @@ function App() {
       <div className="App-header">Trellox</div>
       <div className="App-body">
         <TaskContext.Provider value={value}>
-          {data.columnOrder && data.columnOrder.map(columnId => {
-            return <Column
-              key={data.columns[columnId].id}
-              id={data.columns[columnId].id} />
-            }
-            )}
+          {data.columnOrder &&
+            <Column columns={data.columnOrder} />
+          }
           {addingColumn
             ? <NewColumn
               title={""}

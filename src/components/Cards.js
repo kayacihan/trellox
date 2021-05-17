@@ -9,20 +9,24 @@ export default function Cards(props) {
     const [addingCard, setAddingCard] = useState(false)
 
         return (
-            <Droppable droppableId={props.id} key={props.id} >
+            <div>
+                <Droppable droppableId={props.id} key={props.id} type="TASK" >
                     {(provided, snapshot) => (
                     <div
-                            ref={provided.innerRef} className="Cards">
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                            className="Cards">
                         {data.columns[props.index].taskIds.map((task, index) => (
-                            <Draggable key={task} draggableId={task} index={index}>
+                            <Draggable key={task} draggableId={task} index={index} >
                                     {(provided, snapshot) => (
                                         <div
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                         {...provided.dragHandleProps}
-                                        >
+                                    ><div>
                                         <Card key={task} task={data.tasks[task]} />
                                         </div>
+                                    </div>
                                     )}
                                 </Draggable>
                         ))}
@@ -40,6 +44,7 @@ export default function Cards(props) {
                         </div>
                     )}
             </Droppable>
+            </div>
         )
 
 }
